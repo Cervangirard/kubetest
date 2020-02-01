@@ -28,8 +28,6 @@ app_server <- function( input, output, session ) {
     future(packages = "app",{
       ok <- httr::GET(get_url(species))
       httr::content(ok)
-      Sys.sleep(5)
-      
     })  %...>%
       map_df(as.data.frame) %...>%
       head(10) %...>%
