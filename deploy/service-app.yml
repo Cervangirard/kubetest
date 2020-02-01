@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: infinity-app
+  labels:
+    app: infinity-deploy
+spec:
+  ports:
+    - port: 3838
+      targetPort: 80
+  selector:
+    app: app
+    tier: frontend
+  type: NodePort

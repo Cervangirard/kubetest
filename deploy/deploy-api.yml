@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infinity-api
+  labels:
+    app: infinity-deploy
+spec:
+  selector:
+    matchLabels:
+      app: api
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: api
+        tier: backend
+    spec:
+      containers:
+        - name: api
+          image: cervang/api:0.0.2
+          ports:
+            - containerPort: 8080

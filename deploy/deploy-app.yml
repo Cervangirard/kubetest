@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infinity-app
+  labels:
+    app: infinity-deploy
+spec:
+  selector:
+    matchLabels:
+      app: app
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: app
+        tier: frontend
+    spec:
+      containers:
+        - name: app
+          image: cervang/app:0.0.7
+          env:
+            - name: portapi
+              value: "8080"
+            - name: urlapi
+              value: "reseau-api"
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "500mi"
